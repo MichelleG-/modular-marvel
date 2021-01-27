@@ -23,10 +23,10 @@ class CharactersListModule(
     @FeatureScope
     @Provides
     fun providesCharactersListViewModel(
-        dataFactory: CharactersPageDataSourceFactory
-    ) = fragment.viewModel.apply {
-        CharactersListViewModel(
-            dataSourceFactory = dataFactory) }
+        dataFactory: CharactersPageDataSourceFactory) : CharactersListViewModel{
+            fragment.viewModel = CharactersListViewModel(dataSourceFactory = dataFactory)
+            return fragment.viewModel
+        }
 
     @Provides
     fun providesCharactersPageDataSource(

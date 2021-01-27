@@ -14,5 +14,8 @@ class MainModule(
     val fragment: MainFragment
 ) {
     @Provides
-    fun providesMainViewModel() = fragment.viewModel
+    fun providesMainViewModel() : MainViewModel{
+        fragment.viewModel = MainViewModel()
+        return fragment.viewModel
+    }
 }

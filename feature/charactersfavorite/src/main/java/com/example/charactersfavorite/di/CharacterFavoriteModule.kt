@@ -15,17 +15,16 @@ class CharacterFavoriteModule(
     val fragment: CharacterFavoriteFragment
 ) {
 
-    @Provides
     @FeatureScope
+    @Provides
     fun providesCharactersFavoriteViewModel(
-        characterFavoriteRepository: CharacterFavoriteRepository
-    ) = fragment.viewModel.apply {
-        CharactersFavoriteViewModel(
-            characterFavoriteRepository = characterFavoriteRepository
-        )
+        characterFavoriteRepository: CharacterFavoriteRepository) : CharactersFavoriteViewModel{
+        fragment.viewModel = CharactersFavoriteViewModel(characterFavoriteRepository = characterFavoriteRepository)
+        return fragment.viewModel
     }
 
     @Provides
     @FeatureScope
     fun providesCharactersFavoriteAdapter() = CharactersFavoriteAdapter()
 }
+s

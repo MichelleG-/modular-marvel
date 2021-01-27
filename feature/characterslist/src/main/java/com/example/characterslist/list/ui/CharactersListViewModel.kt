@@ -21,6 +21,8 @@ class CharactersListViewModel
         it.networkState
     }
 
+
+
     val event = SingleLiveData<CharactersListViewEvent>()
     val data = LivePagedListBuilder(dataSourceFactory, PAGE_MAX_ELEMENTS).build()
     val state = Transformations.map(networkState) {
