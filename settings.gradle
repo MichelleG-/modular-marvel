@@ -1,0 +1,7 @@
+include ':commons:view'
+include ':commons:ui'
+include ':feature:charactersfavorite'
+include ':feature:characterslist'
+include ':datasource'
+include ':app'
+rootProject.name = "modular-marvel"

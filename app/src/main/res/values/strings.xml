@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Application name-->
+    <string name="app_name">MarvelDEV</string>
+    <string name="title_featuresapp">Features</string>
+    <string name="title_characterslist">CharactersList</string>
+    <string name="title_features">Features</string>
+
+    <!--Home tab items-->
+    <string name="home_tab_characters">Characters</string>
+    <string name="home_tab_favorites">Favorites</string>
+
+    <!--Home toolbar items-->
+    <string name="home_toolbar_theme">Toggle Theme</string>
+</resources>

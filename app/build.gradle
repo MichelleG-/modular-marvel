@@ -1,0 +1,108 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id "androidx.navigation.safeargs.kotlin"
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+       // shrinkResources true
+        //vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+          //  shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug{
+        }
+    }
+
+    compileOptions {
+        //coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+    dynamicFeatures = [':feature:characterslist', ':feature:charactersfavorite']
+}
+
+dependencies {
+    def APPCOMPAT = "1.2.0"
+    def MATERIAL = "1.2.1"
+    def NAVIGATION = "2.3.0-rc01"
+    def CONSTRAIN_LAYOUT = "2.0.2"
+    def DAGGER = "2.29.1"
+    def LOGGING = "4.9.0"
+    def PLAY_CORE = "1.8.2"
+    def COROUTINES = "1.3.9"
+    def ROOM = "2.2.5"
+    def LIFECYCLE = "2.2.0"
+    def CORE_KTX = "1.3.2"
+    def FRAGMENT_KTX = "1.2.5"
+    def DATABINDING = "3.1.4"
+
+    //Module
+    implementation project(":datasource")
+    implementation project(":commons:ui")
+
+    //androidx
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$APPCOMPAT"
+    implementation "com.google.android.material:material:$MATERIAL"
+    implementation "androidx.constraintlayout:constraintlayout:$CONSTRAIN_LAYOUT"
+
+    implementation "androidx.core:core-ktx:$CORE_KTX"
+    implementation "androidx.fragment:fragment-ktx:$FRAGMENT_KTX"
+    implementation "com.google.dagger:dagger:$DAGGER"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$COROUTINES"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$NAVIGATION"
+    implementation "androidx.navigation:navigation-ui-ktx:$NAVIGATION"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$NAVIGATION"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$LIFECYCLE"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYCLE"
+
+    //retrofit
+    implementation "com.squareup.okhttp3:logging-interceptor:$LOGGING"
+
+    //play
+    implementation "com.google.android.play:core:$PLAY_CORE"
+
+    implementation "androidx.room:room-runtime:$ROOM"
+    implementation "androidx.room:room-ktx:$ROOM"
+
+    kapt "com.android.databinding:compiler:$DATABINDING"
+    kapt "androidx.room:room-compiler:$ROOM"
+    kapt "com.google.dagger:dagger-compiler:$DAGGER"
+
+    //tests
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
